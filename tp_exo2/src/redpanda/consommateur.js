@@ -15,10 +15,13 @@ export const connect = async (topic) => {
 export const startConsumer = async () => {
     await consommateur.run({
         eachMessage: async ({ topic, partition, message, heartbeat, pause }) => {
-            console.log({
-                key: message.key ? message.key.toString() : null,
-                value: message.value ? message.value.toString() : null,
-                headers: message.headers,
+            const words = message.value.toString().split(/\s+/);
+            words.forEach(word => {
+                console.log({
+                    key: message.key ? message.key.toString() : null,
+                    word: word,
+                    headers: message.headers,
+                });
             });
 
             await heartbeat();
@@ -32,4 +35,3 @@ const formatTimestamp = (timestamp) => {
     const formattedTime = `${date.getHours()}:${date.getMinutes()}`;
     return `${formattedDate} at ${formattedTime}`;
 };
-
