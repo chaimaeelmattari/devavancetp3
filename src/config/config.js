@@ -1,6 +1,9 @@
 import 'dotenv/config'
 
-
+//exo1
+export const getConfigNumberWord = () => {
+    return Number(process.env.NUMBER_WORD) || 3
+}
 export const getConfigNumber = () => {
 
     let signe = process.env.SIGNED
@@ -13,6 +16,7 @@ export const getConfigNumber = () => {
         integerSize: Number(process.env.INTEGER_SIZE),
         decimalValue: Number(process.env.DECIMAL_VALUE),
         signed: signe
+
     };
 }
 
@@ -35,4 +39,5 @@ export const getDebug = () => {
 
 export const getLocalBroker = () => {
     return process.env.HOST_IP !== ""
+
 }
