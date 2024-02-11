@@ -21,9 +21,6 @@ export const startConsumer = async () => {
                 headers: message.headers,
             });
 
-            // Faire quelque chose avec le message
-
-            // Marquer le message comme traité
             await heartbeat();
         },
     });
